@@ -1,0 +1,9 @@
+---
+    - name: install vim
+      apt: name=vim state=latest
+    - name: install zip
+      apt: name=zip state=latest
+    - name: copy with vars
+      template:
+         src: connection_info.j2
+         dest: /tmp/test2

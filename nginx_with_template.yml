@@ -1,0 +1,16 @@
+---
+    - hosts: node1
+      handlers:
+      - name: welcome
+        template:
+           src: index.j2
+           dest: /var/www/html/index.html
+      tasks:
+        - name: ensure nginx is at the latest version
+          apt: name=nginx state=latest
+        - name: start nginx
+          service:
+              name: nginx
+              state: started
+          notify: welcome
+    
